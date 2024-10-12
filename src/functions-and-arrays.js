@@ -168,6 +168,28 @@ console.log(howManyTimes(wordArr4, 'matter')); // 4
 
 
 // Iteration #8: Bonus
+function greatestProduct(matrix) {
+  let maxProduct = 0;
+  
+  // Check horizontally and vertically
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      // Horizontal product
+      const horizProduct = matrix[i][j] * matrix[i][j+1] * matrix[i][j+2] * matrix[i][j+3];
+      maxProduct = Math.max(maxProduct, horizProduct);
+      
+      // Vertical product
+      if (i < matrix.length - 3) {
+        const vertProduct = matrix[i][j] * matrix[i+1][j] * matrix[i+2][j] * matrix[i+3][j];
+        maxProduct = Math.max(maxProduct, vertProduct);
+      }
+    }
+  }
+  
+  return maxProduct;
+}
+
+// Test case
 const matrix = [
   [8, 2, 22, 97, 38, 15, 0, 40, 0, 75, 4, 5, 7, 78, 52, 12, 50, 77, 91, 8],
   [49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 4, 56, 62, 0],
@@ -190,9 +212,30 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+console.log(greatestProduct(matrix));
 
-function greatestProduct() {}
 
+// Iteration #8.1: Product of diagonals
+function greatestProductOfDiagonals(matrix) {
+  let maxProduct = 0;
+
+  for (let i = 0; i < matrix.length - 3; i++) {
+    for (let j = 0; j < matrix[i].length - 3; j++) {
+      // Diagonal from top-left to bottom-right
+      const diag1Product = matrix[i][j] * matrix[i+1][j+1] * matrix[i+2][j+2] * matrix[i+3][j+3];
+      maxProduct = Math.max(maxProduct, diag1Product);
+
+      // Diagonal from bottom-left to top-right
+      const diag2Product = matrix[i+3][j] * matrix[i+2][j+1] * matrix[i+1][j+2] * matrix[i][j+3];
+      maxProduct = Math.max(maxProduct, diag2Product);
+    }
+  }
+
+  return maxProduct;
+}
+
+// Test case
+console.log(greatestProductOfDiagonals(matrix)); // Result depends on the test matrix
 
 
 
