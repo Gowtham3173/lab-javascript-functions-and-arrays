@@ -106,47 +106,64 @@ const mixedArr2 = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
 console.log(avg(mixedArr2)); // 5.7
 
 // Iteration #5: Unique arrays
-const wordsUnique = [
-  'crab',
-  'poison',
-  'contagious',
-  'simple',
-  'bring',
-  'sharp',
-  'playground',
-  'poison',
-  'communion',
-  'simple',
-  'bring'
-];
+function uniquifyArray(words) {
+  if (!words.length) return null;
+  
+  const uniqueWords = [];
+  
+  for (let word of words) {
+    if (!uniqueWords.includes(word)) {
+      uniqueWords.push(word);
+    }
+  }
+  
+  return uniqueWords;
+}
 
-function uniquifyArray() {}
+// Test case
+const wordArr2 = ['crab', 'poison', 'contagious', 'simple', 'bring', 'sharp', 'playground', 'poison', 'communion', 'simple', 'bring'];
+console.log(uniquifyArray(wordArr2)); // ['crab', 'poison', 'contagious', 'simple', 'bring', 'sharp', 'playground', 'communion']
+
 
 
 
 // Iteration #6: Find elements
-const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+function doesWordExist(words, word) {
+  if (!words.length) return null;
+  
+  for (let item of words) {
+    if (item === word) {
+      return true;
+    }
+  }
+  
+  return false;
+}
 
-function doesWordExist() {}
-
+// Test case
+const wordArr3 = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+console.log(doesWordExist(wordArr3, 'matter')); // true
 
 
 // Iteration #7: Count repetition
-const wordsCount = [
-  'machine',
-  'matter',
-  'subset',
-  'trouble',
-  'starting',
-  'matter',
-  'eating',
-  'matter',
-  'truth',
-  'disobedience',
-  'matter'
-];
+function howManyTimes(words, word) {
+  if (!words.length) return 0;
+  
+  let count = 0;
+  
+  for (let item of words) {
+    if (item === word) {
+      count++;
+    }
+  }
+  
+  return count;
+}
 
-function howManyTimes() {}
+// Test case
+const wordArr4 = ['machine', 'matter', 'subset', 'trouble', 'starting', 'matter', 'eating', 'matter', 'truth', 'disobedience', 'matter'];
+console.log(howManyTimes(wordArr4, 'matter')); // 4
+
 
 
 
