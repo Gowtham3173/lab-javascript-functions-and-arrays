@@ -24,31 +24,86 @@ console.log(findLongestWord(words));
 
 
 // Iteration #3: Calculate the sum
+function sumNumbers(numbers) {
+  let sum = 0;
+  
+  for (let number of numbers) {
+    sum += number;
+  }
+  
+  return sum;
+}
+
+// Test case
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
-
-function sumNumbers() {}
-
+console.log(sumNumbers(numbers));
 
 
 // Iteration #3.1 Bonus:
-function sum() {}
+function sum(arr) {
+  let total = 0;
+  
+  for (let item of arr) {
+    if (typeof item === 'number') {
+      total += item;
+    } else if (typeof item === 'string') {
+      total += item.length;
+    } else if (typeof item === 'boolean') {
+      total += item ? 1 : 0;
+    }
+  }
+  
+  return total;
+}
+
+// Test case
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+console.log(sum(mixedArr));
 
 
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
-const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+function averageNumbers(numbers) {
+  if (!numbers.length) return null;
+  
+  const sum = sumNumbers(numbers);
+  return sum / numbers.length;
+}
 
-function averageNumbers() {}
+// Test case
+const numbersArr = [2, 6, 9, 10, 7, 4, 1, 9];
+console.log(averageNumbers(numbersArr)); // 6
 
 
 // Level 2: Array of strings
-const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+function averageWordLength(words) {
+  if (!words.length) return null;
+  
+  let totalLength = 0;
+  
+  for (let word of words) {
+    totalLength += word.length;
+  }
+  
+  return totalLength / words.length;
+}
 
-function averageWordLength() { }
+// Test case
+const wordArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+console.log(averageWordLength(wordArr)); // 5.3
 
 // Bonus - Iteration #4.1
-function avg() {}
+function avg(arr) {
+  if (!arr.length) return null;
+  
+  const total = sum(arr);
+  return total / arr.length;
+}
+
+// Test case
+const mixedArr2 = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+console.log(avg(mixedArr2)); // 5.7
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
